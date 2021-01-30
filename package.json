@@ -1,0 +1,23 @@
+{
+  "name": "jeez",
+  "version": "1.0.0",
+  "description": "A personal update of some builtin classes of javascript",
+  "main": "jeez.js",
+  "types": "jeez.d.ts",
+  "scripts": {
+    "test": "node tests.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bnz-0/jeez.git"
+  },
+  "author": "Matteo Benzi <matteo.benzi97@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Bnz-0/jeez/issues"
+  },
+  "homepage": "https://github.com/Bnz-0/jeez#readme",
+  "dependencies": {
+    "date-update": "latest"
+  }
+}
