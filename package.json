@@ -1,5 +1,5 @@
 {
-  "name": "jeez",
+  "name": "@bnz-0/jeez",
   "version": "1.0.0",
   "description": "A personal update of some builtin classes of javascript",
   "main": "jeez.js",
