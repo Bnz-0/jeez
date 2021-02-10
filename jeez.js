@@ -66,7 +66,6 @@ Object.prototype.gen = function(value = null, length = null, condition = (i,k,v)
 	const goon = length == null ? () => i < keys.length : () => glen < length;
 	for(; goon(); i++) {
 		if(condition(i, keys[i], this[keys[i]])) {
-			// g = {...g, ...value(i, keys[i], this[keys[i]])};
 			Object.assign(g, value(i, keys[i], this[keys[i]]));
 			glen++; //NB: glen counts only the number of time the value() function is called, if value() returns an object with more than one key or returns multiple time the same key, the real final "length" will be different
 		}
