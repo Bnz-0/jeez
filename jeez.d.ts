@@ -12,7 +12,7 @@ declare global {
 		 *
 		 * @example [].gen((i,x) => i*2, 5, (i,x) => i%2==0) // [0, 4, 8, 16, 32]
 		*/
-		gen<T>(value?: (i: number, x: any) => T, length?: number, condition?: (i: number, x: any) => boolean): T[];
+		gen<V>(value?: (i: number, x: T) => V, length?: number, condition?: (i: number, x: T) => boolean): V[];
 	}
 
 	interface Object {
