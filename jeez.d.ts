@@ -24,7 +24,7 @@ declare global {
 		 *
 		 * @example {}.gen((i,k,v) => ({[i]:i*2}), 3, (i,k,v) => i%2==0) // {'0':0, '2':4, '4':8}
 		*/
-		gen<V>(value?: (i: number, k: any, v: any) => Record<string|number|symbol,V>, length?: number, condition?: (i: number, k: any, v: any) => boolean): Record<string|number|symbol,V>;
+		gen<V>(value?: (i: number, k: string|number|symbol, v: any) => Record<string|number|symbol,V>, length?: number, condition?: (i: number, k: string|number|symbol, v: any) => boolean): Record<string|number|symbol,V>;
 	}
 
 	interface String {
