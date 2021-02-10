@@ -12,7 +12,7 @@ require('@bnz-0/jeez');
 
 - **Array.gen**:
 	```typescript
-	gen<T>(value?: (i: number, x: any) => T, length?: number, condition?: (i: number, x: any) => boolean): T[];
+	gen<V>(value?: (i: number, x: T) => V, length?: number, condition?: (i: number, x: T) => boolean): V[];
 	```
 	Generate a new Array from another
 	- **value**: a function that takes the index and the element and return the value to push in the new array
@@ -27,7 +27,7 @@ require('@bnz-0/jeez');
 
 - **Objects.gen**:
 	```typescript
-	gen<V>(value?: (i: number, k: any, v: any) => Record<string|number|symbol,V>, length?: number, condition?: (i: number, k: any, v: any) => boolean): Record<string|number|symbol,V>;
+	gen<V>(value?: (i: number, k: string|number|symbol, v: any) => Record<string|number|symbol,V>, length?: number, condition?: (i: number, k: string|number|symbol, v: any) => boolean): Record<string|number|symbol,V>;
 	```
 	Generate a new Object form another
 	- **value**: a function that takes the counter, the key and the value and returns an object to be added in the new object
