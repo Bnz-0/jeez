@@ -16,7 +16,7 @@ declare global {
 
 		/** Return the last element of an array
 		*/
-		last<T>(): T|undefined;
+		last(): T|undefined;
 	}
 
 	interface Object {
