@@ -23,6 +23,7 @@
 //
 // ============================================================
 //
+// 1.0.3 — new method: String.hashCode
 // 1.0.2 — new method: Array.last
 // 1.0.1 — fix types definition and vanilla js compatibility
 // @bnz-0/jeez 1.0.0 — A personal update of some builtin classes of javascript
@@ -100,4 +101,21 @@ String.prototype.trimChars = function(chars) {
 		e -= decr_e;
 	}
 	return s < e ? this.substring(s, e) : "";
+}
+
+/** Returns a simple, fast but not secure hash from a string
+ *
+ * implementation taken from: https://werxltd.com/wp/2010/05/13/javascript-implementation-of-javas-string-hashcode-method/
+ */
+String.prototype.hashCode = function() {
+    var hash = 0;
+    if (this.length == 0) {
+        return hash;
+    }
+    for (var i = 0; i < this.length; i++) {
+        var char = this.charCodeAt(i);
+        hash = ((hash<<5)-hash)+char;
+        hash = hash & hash; // Convert to 32bit integer
+    }
+    return hash;
 }

@@ -40,5 +40,11 @@ declare global {
 		 * @example "0123example45".trimChars(/[0-9]/) // "example"
 		*/
 		trimChars(chars: string|RegExp): string;
+
+		/** Returns a simple, fast but not secure hash from a string
+		 *
+		 * implementation taken from: https://werxltd.com/wp/2010/05/13/javascript-implementation-of-javas-string-hashcode-method/
+		 */
+		hashCode(): number;
 	}
 }

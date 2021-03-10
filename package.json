@@ -1,6 +1,6 @@
 {
   "name": "@bnz-0/jeez",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A personal update of some builtin classes of javascript",
   "main": "jeez.js",
   "types": "jeez.d.ts",
