@@ -37,6 +37,12 @@ assert(arrayEqual(a3, a4));
 assert(arrayEqual(a5, [0,100,400,900,1600]));
 assert(a6 !== a1 && arrayEqual(a6,a1));
 
+// Array.last tests
+assert([].last() === undefined);
+assert([0].last() === 0);
+assert(a1.last() === 5);
+
+
 // Object.gen tests
 o1 = {}.gen((i) => ({[i]:i}), 3);
 o2 = {}.gen((i) => ({[i+1]:i*2}), 2, (i) => i.toString()[0]==='3');

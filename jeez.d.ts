@@ -13,6 +13,10 @@ declare global {
 		 * @example [].gen((i,x) => i*2, 5, (i,x) => i%2==0) // [0, 4, 8, 16, 32]
 		*/
 		gen<V>(value?: (i: number, x: T) => V, length?: number, condition?: (i: number, x: T) => boolean): V[];
+
+		/** Return the last element of an array
+		*/
+		last<T>(): T|undefined;
 	}
 
 	interface Object {

@@ -25,6 +25,17 @@ require('@bnz-0/jeez');
 	> [].gen((i) => i*i, 5, (i) => i%10===0) // [0, 100, 400, 900, 1600]
 	> ```
 
+- **Array.last**:
+	```typescript
+	last<T>(): T|undefined;
+	```
+	Return the last element of an array
+	> Examples:
+	> ```javascript
+	> [1,2,3].last() // 3
+	> [].last() // undefined
+	> ```
+
 - **Objects.gen**:
 	```typescript
 	gen<V>(value?: (i: number, k: string|number|symbol, v: any) => Record<string|number|symbol,V>, length?: number, condition?: (i: number, k: string|number|symbol, v: any) => boolean): Record<string|number|symbol,V>;
@@ -62,6 +73,6 @@ See [test.js](./tests.js) to see some example of usage.
 ## Why?
 Because yes.
 
-... and because I'm not really satisfied by the builtin methods of js' classes, so 
+... and because I'm not really satisfied by the builtin methods of js' classes, so
 I decided to extend them with some methods that I feel are useful for the way I work.
 

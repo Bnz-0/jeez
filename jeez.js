@@ -22,7 +22,8 @@
 // OTHER DEALINGS IN THE SOFTWARE.
 //
 // ============================================================
-// 
+//
+// 1.0.2 — new method: Array.last
 // 1.0.1 — fix types definition and vanilla js compatibility
 // @bnz-0/jeez 1.0.0 — A personal update of some builtin classes of javascript
 //
@@ -49,6 +50,12 @@ Array.prototype.gen = function(value = null, length = null, condition = (i,x) =>
 			g.push(value(i, this[i]));
 	}
 	return g;
+}
+
+/** Return the last element of an array
+ */
+Array.prototype.last = function() {
+	return this[this.length-1];
 }
 
 /** Generate a new Object form another
