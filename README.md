@@ -27,7 +27,7 @@ require('@bnz-0/jeez');
 
 - **Array.last**:
 	```typescript
-	last<T>(): T|undefined;
+	last(): T|undefined;
 	```
 	Return the last element of an array
 	> Examples:
