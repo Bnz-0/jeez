@@ -66,6 +66,16 @@ require('@bnz-0/jeez');
 	> "0123example45".trimChars(/[0-9]/) // "example"
 	> ```
 
+- **String.hashCode**:
+	```typescript
+	hashCode(): number;
+	```
+	Returns a simple, fast but not secure hash from a string
+	> Examples:
+	> ```javascript
+	> "jeez".hashCode() // 3258160
+	> ```
+
 ## Examples
 
 See [test.js](./tests.js) to see some example of usage.

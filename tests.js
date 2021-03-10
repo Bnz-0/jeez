@@ -78,4 +78,8 @@ assert("t3st".trimChars(/[A-Z0-9]/) === "t3st");
 assert("\tt3st \n".trimChars(/\s/) === "t3st");
 assert("".trimChars('') === "");
 
+// String.hashCode tests
+assert("jeez".hashCode() === 3258160)
+assert("".hashCode() === 0)
+
 console.log('all tests passed');
