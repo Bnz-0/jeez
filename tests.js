@@ -65,6 +65,7 @@ assert(objectEqual(o2, {'4':6, '31':60}));
 assert(objectEqual(o3, {'1':'one', '2':'two', '3':'three'}));
 assert(objectEqual(o4, {'1':'one', '3':'three'}));
 assert(o5 !== o4 && objectEqual(o5,o4));
+assert({}.gen(1) === undefined);
 
 // String.trimChars tests
 assert("test".trimChars('t') === "es");

@@ -23,6 +23,7 @@
 //
 // ============================================================
 //
+// 1.0.4 — fix Object.gen unwanted exception
 // 1.0.3 — new method: String.hashCode
 // 1.0.2 — new method: Array.last
 // 1.0.1 — fix types definition and vanilla js compatibility
@@ -68,6 +69,12 @@ Array.prototype.last = function() {
  * @example {}.gen((i,k,v) => ({[i]:i*2}), 3, (i,k,v) => i%2==0) // {'0':0, '2':4, '4':8}
 */
 Object.prototype.gen = function(value = null, length = null, condition = (i,k,v) => true) {
+	if(
+		(value && typeof value !== 'function') || // necesary to avoid an annoying error caused by the sharepoint framewor
+		(length && typeof length !== 'number') || //  that pass a `value` that isn't a function
+		(condition && typeof condition !== 'function')
+	) return undefined;
+
 	if(!value) value = (i,k,v) => ({[k]:v}) //NB: this converts keys in string whatever they are before, but in js is fine
 	let g = {}, i=0, glen=0;
 	const keys = Object.keys(this);
