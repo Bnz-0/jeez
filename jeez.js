@@ -23,6 +23,7 @@
 //
 // ============================================================
 //
+// 1.0.5 — removed default parameter to be compliant to es5
 // 1.0.4 — fix Object.gen unwanted exception
 // 1.0.3 — new method: String.hashCode
 // 1.0.2 — new method: Array.last
@@ -42,8 +43,9 @@ require('date-update');
  *
  * @example [].gen((i,x) => i*2, 5, (i,x) => i%2==0) // [0, 4, 8, 16, 32]
 */
-Array.prototype.gen = function(value = null, length = null, condition = (i,x) => true) {
+Array.prototype.gen = function(value, length, condition) {
 	if(!value) value = (i,x) => x;
+	if(!condition) condition = () => true;
 	const g = [];
 	let i;
 	const goon = length == null ? () => i < this.length : () => g.length < length;
@@ -68,7 +70,7 @@ Array.prototype.last = function() {
  *
  * @example {}.gen((i,k,v) => ({[i]:i*2}), 3, (i,k,v) => i%2==0) // {'0':0, '2':4, '4':8}
 */
-Object.prototype.gen = function(value = null, length = null, condition = (i,k,v) => true) {
+Object.prototype.gen = function(value, length, condition) {
 	if(
 		(value && typeof value !== 'function') || // necesary to avoid an annoying error caused by the sharepoint framewor
 		(length && typeof length !== 'number') || //  that pass a `value` that isn't a function
@@ -76,6 +78,7 @@ Object.prototype.gen = function(value = null, length = null, condition = (i,k,v)
 	) return undefined;
 
 	if(!value) value = (i,k,v) => ({[k]:v}) //NB: this converts keys in string whatever they are before, but in js is fine
+	if(!condition) condition = () => true;
 	let g = {}, i=0, glen=0;
 	const keys = Object.keys(this);
 	const goon = length == null ? () => i < keys.length : () => glen < length;
