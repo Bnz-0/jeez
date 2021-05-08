@@ -18,10 +18,6 @@ function objectEqual(o1,o2){
 	return true;
 }
 
-
-// import test
-assert(!!new Date().trim && !!new Date().add);
-
 // Array.gen tests
 a1 = [].gen((i) => i+1, 5);
 a2 = [10,20,30,40,50,60,70].gen((i,x) => x/10, 5);

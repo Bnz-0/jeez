@@ -1,11 +1,11 @@
 {
   "name": "@bnz-0/jeez",
-  "version": "1.0.5",
+  "version": "1.1.0",
   "description": "A personal update of some builtin classes of javascript",
   "main": "jeez.js",
   "types": "jeez.d.ts",
   "scripts": {
-    "test": "node tests.js"
+    "test": "es-check es5 ./jeez.js && node tests.js"
   },
   "repository": {
     "type": "git",
@@ -19,5 +19,8 @@
   "homepage": "https://github.com/Bnz-0/jeez#readme",
   "dependencies": {
     "date-update": "latest"
+  },
+  "devDependencies": {
+    "es-check": "^5.2.3"
   }
 }

@@ -1,4 +1,4 @@
-// Copyright (c) 2020 Matteo Benzi <matteo.benzi97@gmail.com>
+// Copyright (c) 2021 Matteo Benzi <matteo.benzi97@gmail.com>
 //
 // Permission is hereby granted, free of charge, to any person
 // obtaining a copy of this software and associated documentation
@@ -23,6 +23,7 @@
 //
 // ============================================================
 //
+// 1.1.0 — fully es5 compatible
 // 1.0.5 — removed default parameter to be compliant to es5
 // 1.0.4 — fix Object.gen unwanted exception
 // 1.0.3 — new method: String.hashCode
@@ -33,8 +34,6 @@
 // https://github.com/Bnz-0/jeez
 //
 
-require('date-update');
-
 /** Generate a new Array from another
  *
  * @param value a function that takes the index and the element and return the value to push in the new array
@@ -44,11 +43,12 @@ require('date-update');
  * @example [].gen((i,x) => i*2, 5, (i,x) => i%2==0) // [0, 4, 8, 16, 32]
 */
 Array.prototype.gen = function(value, length, condition) {
-	if(!value) value = (i,x) => x;
-	if(!condition) condition = () => true;
-	const g = [];
-	let i;
-	const goon = length == null ? () => i < this.length : () => g.length < length;
+	if(!value) value = function (i,x) { return x };
+	if(!condition) condition = function () { return true };
+	var g = [], i;
+	var goon = length == null
+		? (function () { return i < this.length }).bind(this)
+		: function () { return g.length < length };
 	for(i=0; goon(); i++) {
 		if(condition(i, this[i]))
 			g.push(value(i, this[i]));
@@ -77,11 +77,15 @@ Object.prototype.gen = function(value, length, condition) {
 		(condition && typeof condition !== 'function')
 	) return undefined;
 
-	if(!value) value = (i,k,v) => ({[k]:v}) //NB: this converts keys in string whatever they are before, but in js is fine
-	if(!condition) condition = () => true;
-	let g = {}, i=0, glen=0;
-	const keys = Object.keys(this);
-	const goon = length == null ? () => i < keys.length : () => glen < length;
+	if(!value) value = function (i,k,v) {
+		var obj = {};
+		obj[k] = v;
+		return obj;
+	};
+	if(!condition) condition = function () { return true };
+	var g = {}, i=0, glen=0;
+	var keys = Object.keys(this);
+	var goon = length == null ? function () { return i < keys.length } : function () { return glen < length };
 	for(; goon(); i++) {
 		if(condition(i, keys[i], this[keys[i]])) {
 			Object.assign(g, value(i, keys[i], this[keys[i]]));
@@ -99,13 +103,13 @@ Object.prototype.gen = function(value, length, condition) {
  * @example "0123example45".trimChars(/[0-9]/) // "example"
 */
 String.prototype.trimChars = function(chars) {
-	const match = chars instanceof RegExp
-		? (c) => c.search(chars) !== -1
-		: (c) => chars.indexOf(c) !== -1;
-	let s = 0, e = this.length;
-	for(let i=0; i < this.length && s <= e; i++) {
-		const incr_s = s === i && match(this[i]);
-		const decr_e = e === this.length-i && match(this[this.length-i-1]);
+	var match = chars instanceof RegExp
+		? function (c) { return c.search(chars) !== -1 }
+		: function (c) { return chars.indexOf(c) !== -1 };
+	var s = 0, e = this.length;
+	for(var i=0; i < this.length && s <= e; i++) {
+		var incr_s = s === i && match(this[i]);
+		var decr_e = e === this.length-i && match(this[this.length-i-1]);
 		if(!incr_s && !decr_e) break;
 		s += incr_s;
 		e -= decr_e;
